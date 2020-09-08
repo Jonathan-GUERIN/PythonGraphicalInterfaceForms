@@ -1,16 +1,14 @@
-# <center>TD1 : Bibliothèque</center>
+**Sommaire**
 
+[[_TOC_]]
 
-_Remarque introductive_ : Les sujets de BE sont rédigés dans le format _Markdown_.  
+# TD1 : Bibliothèque
+
+_Remarque introductive_ : Les sujets de BE sont rédigés dans le format _Markdown_. Si ce format vous intéresse, vous trouverez des pointeurs vers des logiciels open source et des tutoriels sur le site du cours, sur https://pedagogie1.ec-lyon.fr/course/view.php?id=969.
 
 > _Markdown est un langage de balisage léger créé en 2004 par John Gruber avec l'aide d'Aaron Swartz. Son but est d'offrir une syntaxe facile à lire et à écrire. Un document balisé par Markdown peut être lu en l'état sans donner l'impression d'avoir été balisé ou formaté par des instructions particulières. Il peut être converti en HTML, en PDF ou en d'autres formats._
 
-Si cela vous intéresse, vous trouverez des informations et un tutoriel en suivant ce lien : [Wikipédia markdown](https://fr.wikipedia.org/wiki/Markdown). Noter que savoir utiliser le format Markdown n'est pas nécessaire pour cet enseignement mais pourrait être d'un intérêt certain durant votre scolarité. Ici, il permet de faciliter les copier-coller de code que vous rencontrerez dans les sujets ; les formats propriétaires Word ou Pdf introduisent des caractères spéciaux ou cachés qui brouillent l'interpréteur Python, et génèrent bien souvent des incompréhensions pour les programmeurs débutants.    
-Pour améliorer la lisibilité, nous avons fait appel à quelques commandes html complémentaires.
-
----
-
-# Objectif du sujet
+## Objectif du sujet
 
 Dans cet énoncé, nous abordons deux concepts de base de la programmation orientée objet, __l'encapsulation__ et la __composition__, qui ont été abordées lors du premier cours. Nous nous exercerons également aux diagrammes de classe du langage graphique UML. Pour vos propres diagrammes, vous pouvez utiliser https://app.diagrams.net pour dessiner en ligne (et sauvegarder localement vos diagrammes sur votre machine).
 
@@ -19,7 +17,7 @@ Dans ce BE, il s'agit de concevoir et de réaliser un programme _simple_ de gest
 _Remarque_ : Cet énoncé part d'un problème simple et connu qui permet d'en faire la conception et la réalisation dans le temps qui nous est imparti par les contraintes scolaires. Les choix de conception et de réalisation sont donc orientés par ces contraintes et par les objectifs pédagogiques, à savoir : apprendre la programmation orientée objet en Python. Il est clair que le même problème dans un cadre professionnel serait traité d’une autre manière et une solution basée sur des bases de données émergerait naturellement, solution que nous écartons a priori car en dehors du périmètre de ce cours.
 
 
-# Cahier des charges
+## Cahier des charges
 
 Le cahier des charges de notre application est décrit ci-dessous. Il est volontairement donné de manière informelle.
 
@@ -59,7 +57,7 @@ _Remarque_ : Même si ce n'est pas pas obligatoire, il vous est demandé de dév
 
 ---
 
-# Classe Lecteur et classe Livre (75 minutes)
+## Classe Lecteur et classe Livre (75 minutes)
 
 **Point 1. du cahier des charges**
 
@@ -110,10 +108,8 @@ Un programme principal typique aura l'allure suivante:
         print('B4 -->', B4)
     ```
 
----
 
-
-# Classe Bibliothèque (75 minutes)
+## Classe Bibliothèque (75 minutes)
 
 **Points 3. et 5. du cahier des charges**
 
@@ -133,7 +129,7 @@ Dessinez ensuite le détail de la boîte UML de la classe __Bibliothèque__, de 
 1. Faites de même avec les livres. On ne vérifiera pas si le livre déjà présent dans la collection avant de l'ajouter.
 
 
-# Les emprunts (90 minutes)
+## Les emprunts (90 minutes)
 
 **Points 4. et 5. du cahier des charges**
 
@@ -232,7 +228,7 @@ Un emprunt serra modélisé par un objet qui associe un lecteur (connu par son i
     ```
 
 
-# Questions ouvertes supplémentaires
+## Questions ouvertes supplémentaires
 
 **Point 6. (facultatif) du cahier des charges**
 
