@@ -133,7 +133,7 @@ Dessinez ensuite le détail de la boîte UML de la classe __Bibliothèque__, de 
 
 **Points 4. et 5. du cahier des charges**
 
-Un emprunt serra modélisé par un objet qui associe un lecteur (connu par son identifiant) avec un livre (connu par son identifiant) à une date donnée.    
+Un emprunt sera modélisé par un objet qui associe un lecteur (connu par son identifiant) avec un livre (connu par son identifiant) à une date donnée.    
 
 1. Dessinez la boite UML de la classe __Emprunt__. Celle-ci doit permettre de créer un nouvel emprunt, et d'afficher son état. Prévoyez des getter pour les attributs privés. Comment modéliser en UML les relations de la classe __Emprunt__ avec les classes __Lecteur__ et __Livre__?   
 
