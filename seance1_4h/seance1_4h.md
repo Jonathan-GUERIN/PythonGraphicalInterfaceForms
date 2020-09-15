@@ -10,7 +10,7 @@ _Remarque introductive_ : Les sujets de BE sont rédigés dans le format _Markdo
 
 ## Objectif du sujet
 
-Dans cet énoncé, nous abordons deux concepts de base de la programmation orientée objet, __l'encapsulation__ et la __composition__, qui ont été abordées lors du premier cours. Nous nous exercerons également aux diagrammes de classe du langage graphique UML. Pour vos propres diagrammes, vous pouvez utiliser https://app.diagrams.net pour dessiner en ligne (et sauvegarder localement vos diagrammes sur votre machine).
+Dans cet énoncé, nous abordons deux concepts de base de la programmation orientée objet, __l'encapsulation__ et la __composition__, qui ont été vus lors du premier cours. Nous nous exercerons également aux diagrammes de classe du langage graphique UML. Pour vos propres diagrammes, vous pouvez utiliser https://app.diagrams.net pour dessiner en ligne (et sauvegarder localement vos diagrammes sur votre machine).
 
 Dans ce BE, il s'agit de concevoir et de réaliser un programme _simple_ de gestion d'une bibliothèque, intégrant des lecteurs, des livres et des emprunts.
 
@@ -28,7 +28,7 @@ On doit pouvoir gérer le fond documentaire d'une bibliothèque identifiée par 
      - Le nom de l’auteur,
      - Le titre de l’ouvrage,
      - Un numéro de livre (attribué de manière unique par les bibliothécaires),
-     - Le nombre d’exemplaires achetés.
+     - Le nombre d’exemplaires présents.
 
 1. Notre application doit être capable de gérer également des lecteurs. Chacun d’eux est caractérisé par :
 
@@ -37,9 +37,9 @@ On doit pouvoir gérer le fond documentaire d'une bibliothèque identifiée par 
      - Son adresse,
      - Un numéro (entier positif attribué de manière unique par les bibliothécaires).
 
-1. On doit pouvoir ajouter un lecteur à tout moment et bien sûr rechercher un lecteur (par son numéro de lecteur).   
-On doit également pouvoir ajouter des ouvrages (achat de livres), et rechercher un ouvrage (par numéro).   
-1. Tout lecteur peut emprunter des livres dans la bibliothèque. Un lecteur pour emprunter plusieurs livres différents simultanément ou à des dates différentes et un même livre peut être emprunté par plusieurs lecteurs (s’il existe plusieurs exemplaires). Au moment de l’emprunt, il faut donc vérifier qu’un exemplaire de l'ouvrage est bien disponible et qu'il n'a pas été emprunté par le même lecteur. De manière symétrique, il faut également gérer le retour des livres.
+1. On doit pouvoir ajouter un lecteur à tout moment et, bien sûr, rechercher un lecteur (par son numéro de lecteur).   
+On doit également pouvoir ajouter des ouvrages (acquisition de livres), et rechercher un ouvrage (par numéro).   
+1. Tout lecteur peut emprunter des livres dans la bibliothèque. Un lecteur peut emprunter plusieurs livres différents simultanément ou à des dates différentes et un même livre peut être emprunté par plusieurs lecteurs (s’il existe plusieurs exemplaires). Au moment de l’emprunt, il faut donc vérifier qu’un exemplaire de l'ouvrage est bien disponible et qu'il n'a pas été emprunté par le même lecteur. De manière symétrique, il faut également gérer le retour des livres.
 
 1. On désire également pouvoir éditer des états détaillés :
 
