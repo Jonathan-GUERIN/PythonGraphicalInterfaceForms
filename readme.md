@@ -1,6 +1,6 @@
 Chers étudiants,
 
-ce _repo_ contient l'ensemble des sujets de BE pour l'enseignement `INF-TC2` de l'École centrale de Lyon. Pour voir le sujet, il vous suffit de cliquer sur le fichier markdown (extension _.md_) du répertoire correspondant à la séance.
+ce _repo_ contient l'ensemble des sujets de BE pour l'enseignement `INF-TC2` de l'École centrale de Lyon. Pour consulter le sujet, il vous suffit de cliquer sur le fichier markdown (d'extension _.md_) dans le répertoire correspondant à la séance.
 
 Pour rappel (vu en cours), les BE #3 et #5 seront évalués par votre encadrant. Les consignes pour le rendu sont précisées dans les répertoires respectifs.
 

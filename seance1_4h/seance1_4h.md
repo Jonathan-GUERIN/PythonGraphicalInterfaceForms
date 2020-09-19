@@ -37,15 +37,15 @@ On doit pouvoir gérer le fond documentaire d'une bibliothèque identifiée par 
      - Son adresse,
      - Un numéro (entier positif attribué de manière unique par les bibliothécaires).
 
-1. On doit pouvoir ajouter un lecteur à tout moment et, bien sûr, rechercher un lecteur (par son numéro de lecteur).   
+1. On doit pouvoir ajouter un lecteur à tout moment et rechercher un lecteur (par son numéro de lecteur).   
 On doit également pouvoir ajouter des ouvrages (acquisition de livres), et rechercher un ouvrage (par numéro).   
-1. Tout lecteur peut emprunter des livres dans la bibliothèque. Un lecteur peut emprunter plusieurs livres différents simultanément ou à des dates différentes et un même livre peut être emprunté par plusieurs lecteurs (s’il existe plusieurs exemplaires). Au moment de l’emprunt, il faut donc vérifier qu’un exemplaire de l'ouvrage est bien disponible et qu'il n'a pas été emprunté par le même lecteur. De manière symétrique, il faut également gérer le retour des livres.
+1. Tout lecteur peut emprunter des livres dans une ou plusieurs bibliothèques. Un lecteur peut emprunter plusieurs livres différents simultanément ou à des dates différentes et un même livre peut être emprunté par plusieurs lecteurs (s’il existe plusieurs exemplaires). Au moment de l’emprunt, il faut donc vérifier qu’un exemplaire de l'ouvrage est bien disponible et qu'il n'a pas été emprunté par le même lecteur. De manière symétrique, il faut également gérer le retour des livres.
 
 1. On désire également pouvoir éditer des états détaillés :
 
-    - Liste de tous les lecteurs 
-    - Liste de tous les livres
-    - Liste de tous les emprunts
+    - Liste de tous les lecteurs d'une bibliothèque
+    - Liste de tous les livres d'une bibliothèque
+    - Liste de tous les emprunts d'une bibliothèque
 
 1. Da manière facultative, on souhaite pouvoir retirer un lecteur s'il n'a plus d'emprunt en cours, et retirer un exemplaire non emprunté d'un livre (désherbage ou vol). Un livre qui n'aurait plus d’exemplaire ne doit plus apparaître dans la liste des livres à disposition de la bibliothèque. 
 
@@ -53,7 +53,7 @@ Cet énoncé a pour objectif de vous accompagner pour répondre au cahier des ch
 
 _Remarque_ : Dans chaque titre de chapitre, vous verrez figurer un temps entre parenthèses : celui-ci correspond au temps approximatif à passer pour répondre aux questions du chapitre. Si vous prenez trop retard par rapport à ces _milestones_, demandez de l'aide à votre encadrant!
 
-_Remarque_ : Même si ce n'est pas pas obligatoire, il vous est demandé de développer chaque classe dans un fichier python séparé (tous les fichiers seront enregistrés dans le même répertoire).
+_Remarque_ : Même si ce n'est pas pas obligatoire, il vous est demandé de développer chaque classe dans un fichier python séparé (pensez à enregistrer tous les fichiers dans le même répertoire).
 
 ---
 
@@ -97,10 +97,10 @@ Un programme principal typique aura l'allure suivante:
     if __name__ == '__main__':
 
         # Des livres
-        B1 = Livre('Le Père Goriot',        'Honoré de Balzac',        2,101)
-        B2 = Livre('Les Hauts de Hurlevent','Émilie Bronte',           2,102)
-        B3 = Livre('Le Petit Prince',       'Antoine de Saint-Éxupery',2,103)
-        B4 = Livre("L'Étranger",            'Albert Camus',            2,104)
+        B1 = Livre('Le Père Goriot',  'Honoré de Balzac',        2,101)
+        B2 = Livre("Léon l'Africain", 'Amin Maalouf',            2,102)
+        B3 = Livre('Le Petit Prince', 'Antoine de Saint-Éxupery',2,103)
+        B4 = Livre("L'Étranger",      'Albert Camus',            2,104)
 
         print('B1 -->', B1)
         print('B2 -->', B2)
@@ -113,7 +113,7 @@ Un programme principal typique aura l'allure suivante:
 
 **Points 3. et 5. du cahier des charges**
 
-1. Un bibliothèque gère une collection de livres et un répertoire de lecteurs (et des emprunts, mais nous verrons cela plus tard). Quels liens entre les classes __Bibliotheque__, __Livre__ et __Lecteur__ vous semblent les plus adaptés pour exprimer ces relations ? Dessinez alors le schéma UML entre ces 3 classes sur une feuille de papier. N'oubliez pas d'ajouter les cardinalité de part et d'autre des liens.  
+1. Un bibliothèque gère une collection de livres et un répertoire de lecteurs (et des emprunts, mais nous verrons cela plus tard). Quels liens entre les classes __Bibliotheque__ et __Livre__ d'une part, et __Bibliotheque__ et __Lecteur__ vous semblent les plus adaptés pour exprimer ces relations ? *Tip* Si un Livre appartient à une bibliothèque, un lecteur peut s'inscrire dans plusieurs bibliothèques (vous voyez la différence?)! Dessinez alors le schéma UML entre ces 3 classes. N'oubliez pas d'ajouter les cardinalités de part et d'autre des liens.  
 Dessinez ensuite le détail de la boîte UML de la classe __Bibliothèque__, de manière à répondre au point 3. du cahier des charges.
 
 1. Dans un nouveau fichier appelé _Bibliotheque.py_, commencez par coder le constructeur de la classe __Bibliotheque__, en choisissant la structure de données adéquate pour gérer les lecteurs et les livres. Créez un programme principal, dans lequel vous créerez une bibliothèque (de nom _Michel Serre_ ?). Codez ensuite la méthode `__str__` qui affiche simplement le nom de la bibliothèque. Testez dans votre programme principal. 
@@ -126,7 +126,7 @@ Dessinez ensuite le détail de la boîte UML de la classe __Bibliothèque__, de 
 
     N'oubliez pas de tester chacune des méthodes avant de passer à la suivante! N'hésitez pas à compléter la classe __Lecteur__ s'il vous manque des méthodes...  
 
-1. Faites de même avec les livres. On ne vérifiera pas si le livre déjà présent dans la collection avant de l'ajouter.
+1. Faites de même avec les livres. On ne vérifiera pas si le livre est déjà présent dans la collection avant de l'ajouter.
 
 
 ## Les emprunts (90 minutes)
@@ -226,6 +226,7 @@ Un emprunt sera modélisé par un objet qui associe un lecteur (connu par son id
         Aucun emprunt ne correspond a ces informations :  1 102
         Aucun emprunt ne correspond a ces informations :  10 108
     ```
+
 
 
 ## Questions ouvertes supplémentaires
