@@ -5,9 +5,9 @@
 # TD2 : Modélisation de formes géométriques
 
 
-Nous allons aborder dans ce TD le concept d'héritage de la programmation objet, et l'utilisation de tests unitaires pour guider le développement logiciel et améliorer sa qualité.
+Nous allons aborder dans ce TD le concept d'héritage de la programmation objet, et l'utilisation de tests unitaires pour améliorer la qualité du logiciel.
 
-Le but de ce TD est de concevoir un module pour manipuler des formes géométriques avec Python. Ce module sera utilisé dans les TDs suivants, donc les tests seront essentiels pour limiter les éventuels bugs. Vous commencerez par définir les classes et leurs attributs, puis par écrire les tests unitaires de votre module, et terminerez par l'implémentation des méthodes.
+Le but de ce TD est de concevoir un module pour manipuler des formes géométriques avec Python. Ce module sera utilisé dans les TDs suivants, donc les tests seront essentiels pour limiter les éventuels bugs. Vous commencerez par définir les classes et leurs attributs, puis implémenterez les méthodes, et les validerez avec des tests.
 
 
 ## Modélisation avec UML (1h)
@@ -40,73 +40,117 @@ __Exercice 3 -__ Complétez le diagramme UML avec ces méthodes. Les constructeu
 __Exercice 4 -__ Écrivez un squelette de code correspondant à votre diagramme UML, dans un fichier _formes.py_. Seuls les constructeurs devront être implémentés. À l'intérieur des autres méthodes, vous mettrez l'instruction `pass` de Python (qui ne fait rien mais vous rappelle que le code est inachevé).
 
 
-## Tests unitaires (1h)
+## Implémentation des méthodes (2h)
 
-Il convient à présent de rédiger des tests, qui échoueront tant que chaque fonction ne sera pas implémentée et correcte. Dans la méthodologie _Test Driven Development_, on les écrit toujours avant le code, au début ils échouent tous, et à mesure de l'avancement du projet le nombre de tests passés avec succès augmente. Nous utiliserons le module _pytest_ présenté en cours.
-
-### Installation de _pytest_
-
-Nous allons d'abord installer _pytest_, ainsi qu'un module permettant de lancer les tests depuis l'interface de Spyder. Ouvrez le terminal d'Anaconda (sous Windows, Menu Démarrer -> Anaconda -> Anaconda Prompt, sous Linux/Mac le terminal de base suffit). Exécutez-y la commande suivante :
-
-```sh
-conda install -c spyder-ide spyder-unittest pytest
-```
-
-❗ Si vous rencontrez une erreur comme `conda: command not found`, c'est que l'exécutable `conda` n'est présent dans aucun des dossiers visités par le terminal (essayez `echo %PATH%` pour en afficher la liste sous Windows, et `echo $PATH` sous Linux/Mac). Sous Windows, vérifiez que vous ouvrez bien le terminal d'Anaconda (pas le terminal par défaut du système). Sous Linux/Mac, la commande `export PATH=~/anaconda3/bin:/usr/local/anaconda3/bin:/usr/anaconda3/bin:$PATH` va ajouter (temporairement) une liste de répertoires usuels à la liste de recherche.
-
-Une fois les modules installés, __redémarrez Spyder__ et créez un fichier _test_formes.py_ avec l'exemple de code suivant :
+Créez un fichier _test_formes.py_ dans le même dossier que _formes.py_ et initialisé avec le code suivant :
 
 ```python
 from formes import *
 
-def test_heritage():
-	assert issubclass(Rectangle, Forme)
-	assert issubclass(Ellipse, Forme)
+def test_Rectangle():
+    r = Rectangle(10, 20, 100, 50)
+    str(r)
+    assert r.contient_point(50, 50)
+    assert not r.contient_point(0, 0)
+    r.redimension_par_points(100, 200, 1100, 700)
+    assert r.contient_point(500, 500)
+    assert not r.contient_point(50, 50)
+
+def test_Ellipse():
+    e = Ellipse(60, 45, 50, 25)
+    str(e)
+    assert e.contient_point(50, 50)
+    assert not e.contient_point(11, 21)
+    e.redimension_par_points(100, 200, 1100, 700)
+    assert e.contient_point(500, 500)
+    assert not e.contient_point(101, 201)
+
+if __name__ == '__main__':
+    test_Rectangle()
+    test_Ellipse()
 ```
 
-__Exécutez ce fichier__ dans Spyder (même s'il ne fait rien), ce qui a pour effet d'initialiser le répertoire courant de Spyder à votre répertoire de travail. Allez ensuite dans le menu Run -> Run unit tests, pour configurer le module _spyder-unittest_.
+La commande `assert` de Python permet de spécifier une assertion (une condition qui doit toujours être vraie) à un point du programme. Elle sert avant un bloc de code à en documenter les prérequis, et après un bloc de code à en vérifier les résultats. Son échec signifie alors un bug du programme. `assert` reçoit une expression (comme ce qu'on passe à `if`), et vérifie son résultat :
 
-<center><img src="figures/spyder-unittest.png" style="width:100%"/></center>
+* Si `True`, l'assertion est vraie donc pas de problème, `assert` ne fait rien.
+* Si `False`, l'assertion est fausse donc une exception `AssertionError` est déclenchée.
+* Si l'expression renvoie une autre valeur, celle-ci est convertie en booléen pour se ramener aux deux cas précédents.
 
+La vérification de cette condition est faite une fois au moment de son exécution (l'assertion ne sera pas valide dans le reste du programme). Dans _test_formes.py_ on utilise `assert` pour tester une fonctionnalité qui n'est pas encore implémentée, l'exécution de ce fichier échouera tant que les méthodes de seront pas codées. À l'issue de cette partie, elle ne devra renvoyer aucune erreur !
 
-Sélectionnez _pytest_, vérifiez que le dossier indiqué correspond à votre dossier de travail (celui contenant les fichiers _formes.py_ et _test_formes.py_), et validez. Un nouvel onglet _Unit testing_ apparaît dans l'espace en haut à droite, avec un bouton _Run tests_. Lorsque vous cliquez dessus :
+__Exercice 5 -__ Implémentez les méthodes d'affichage (`__str__`) de chacune des classes dans _formes.py_. Vous pourrez vérifier leur bon fonctionnement en exécutant _formes.py_ (bouton Run File - F5), puis par exemple avec une commande `print(Rectangle(0, 0, 10, 10))` dans la console IPython.
 
-* _pytest_ cherche (dans le dossier que vous venez de configurer) tous les fichiers de la forme _test\_\*.py_ et _\*\_test.py_.
-* Dans chacun de ces fichiers, _pytest_ exécute toutes les fonctions préfixées par `test`.
-* Chaque test qui s'exécute sans déclencher d'exception est considéré valide.
-* La fonction `test_heritage` dans le fichier _test_formes.py_ correspond à ces critères, donc elle est exécutée et son résultat contribue à un test "passé" (avec succès).
-
-<center><img src="figures/spyder-tests.png" style="width:100%"/></center>
-
-### Définition des tests
-
-__Exercice 5 -__ Dans le fichier _test_formes.py_, ajoutez une fonction `test_Rectangle_contient_point()` qui instancie un __Rectangle__ avec des coordonnées de votre choix, et vérifie avec `assert` que la méthode `contient_point` renvoie le bon résultat pour différentes coordonnées. L'exécution du test doit échouer puisque votre code est encore vide.
-
-Pour l'exercice suivant, on vous donne un exemple d'implémentation de la méthode `contient_point` pour la classe __Rectangle__. La classe __Forme__ a été omise pour réduire la taille du code (mais dans votre fichier elle devra bien être présente).
+__Exercice 6 -__ Implémentez les méthodes d'accès getter/setter pour les champs privés de chacune des classes. Pour vérifier que les champs sont bien privés, le code suivant __doit__ échouer avec une erreur `AttributeError` :
 
 ```python
-class Rectangle:
-	def __init__(self, x, y, l, h):
-		self.x = x
-		self.y = y
-		self.__l = l
-		self.__h = h
-	
-	def contient_point(self, x, y):
-		return self.x < x < self.__l or \
-		       self.y < y < self.__h
+r = Rectangle(0, 0, 10, 10)
+print(r.__l, r.__h)
 ```
 
-__Exercice 6 -__ Cette méthode est buggée. Comment la corriger ? Vos tests l'avaient-ils repéré ? Si ce n'est pas le cas, trouvez les coordonnées qui donnent un mauvais résultat et ajoutez-les en tests dans la fonction `test_Rectangle_contient_point`.
+__Exercice 7 -__ Implémentez les méthodes `contient_point` des trois sous-classes. Vous vérifierez que les deux premiers `assert` des méthodes de test ne déclenchent pas d'erreur.
+
+__Exercice 8 -__ Implémentez les méthodes `redimension_par_points` de chacune des sous-classes. Le fichier _test_formes.py_ doit à présent s'exécuter sans problème.
+
+## Tests unitaires (1h)
+
+Une fois développées, vos classes vont être utilisées pour des besoins que vous n'aviez pas forcément anticipés. Certains vont révéler des bugs, et vos classes seront amenées à évoluer, y compris pour acquérir de nouvelles méthodes. Les tests unitaires servent à documenter les cas d'utilisation supportés, et également à vous assurer qu'une modification de votre code n'a pas introduit un bug (une _régression_).
+
+On vous fournit une méthode de test plus exhaustive pour __Rectangle__ :
+
+```python
+def test_Rectangle():
+    r = Rectangle(-20, -10, 40, 20)
+    assert r.contient_point(0, 0)
+    assert r.contient_point(-20, 0)
+    assert r.contient_point(0, -10)
+    assert r.contient_point(20, 0)
+    assert r.contient_point(0, 10)
+    assert not r.contient_point(-40, 0)
+    assert not r.contient_point(0, -20)
+    assert not r.contient_point(40, 0)
+    assert not r.contient_point(0, 20)
+    assert not r.contient_point(-40, -20)
+    assert not r.contient_point(40, -20)
+    assert not r.contient_point(40, 20)
+    assert not r.contient_point(-40, 20)
+    reference = str(r)
+    r.redimension_par_points(-20, 10, 20, -10)
+    assert str(r) == reference
+    r.redimension_par_points(20, 10, -20, -10)
+    assert str(r) == reference
+    r.redimension_par_points(20, -10, -20, 10)
+    assert str(r) == reference
+    r.redimension_par_points(-20, -10, 20, 10)
+    assert str(r) == reference
+```
+
+__Exercice 9 -__ Exécutez ce test sur votre code, et corrigez les éventuels bugs. Représentez ensuite dans un logiciel de dessin (ex. https://app.diagrams.net/) le rectangle et les positions des points qui sont testés. Quels bugs sont visés par chacun de ces tests ?
+
+La rédaction de tests unitaires consiste souvent à anticiper les bugs courants, pour améliorer la qualité du logiciel dès sa conception. On cherche donc délibérément à provoquer des situations difficiles à gérer (ex. points _sur_ le bord du rectangle). De telles situations sont par exemple :
+
+* le choix de `<` ou `<=` dans le code
+* le traitement de valeurs négatives
+* les erreurs d'arrondis dans les opérations avec `float`
+* la gestion de valeurs nulles (ex. largeur ou hauteur)
+
+__Exercice 10 -__ Dessinez une ellipse dans votre logiciel de dessin, et représentez tous les points qu'il convient de tester avec `contient_point`. Pour chaque point (ou groupe de points), indiquez le type de bug qu'il vise en particulier. Implémentez ces tests dans _test_formes.py_.
+
+__Exercice 11 -__ Dessinez une forme issue de votre troisième classe dans le logiciel de dessin, et choisissez les points qu'il faudra tester. Implémentez une nouvelle méthode de tests pour cette classe dans _test_formes.py_.
 
 
 
-## Implémentation des méthodes (2h)
+## Pour aller plus loin
 
-__Exercice 7 -__ Implémentez les méthodes d'affichage (`__str__`) de chacune des classes. Il ne sera pas nécessaire d'écrire des tests pour ces méthodes.
+Lorsque votre programme utilise un grand nombre de tests unitaires, il est possible d'automatiser leur collecte, leur exécution, et l'affichage d'un rapport synthétique. On utilisera alors le module [_pytest_](https://docs.pytest.org/en/stable/) pour Python.
 
-__Exercice 8 -__ Implémentez les méthodes d'accès getter/setter pour les champs privés de chacune des classes. À l'aide de [pytest.raises](https://docs.pytest.org/en/stable/assert.html#assertions-about-expected-exceptions), vous testerez le déclenchement d'erreurs si on essaie d'accéder directement aux attributs.
+❗ Son installation nécessite que vous ayez installé Anaconda pour l'utilisateur de la machine, et non global au système. Il suffit alors d'ouvrir un terminal d'Anaconda (sous Windows, Menu Démarrer -> Anaconda -> Anaconda Prompt, sous Linux/Mac le terminal de base suffit), et d'y lancer la commande suivante :
 
-__Exercice 9 -__ Implémentez les méthodes `contient_point` des deux sous-classes restantes. Vous fournirez pour chacune une fonction de tests avec des jeux de coordonnées pertinents.
+```sh
+conda install pytest
+```
 
-__Exercice 10 -__ Implémentez les méthodes `redimension_par_points` de chacune des sous-classes. Vous fournirez également des tests validant leur fonctionnement quels que soient les points en entrée.
+Si vous rencontrez une erreur comme `conda: command not found`, c'est que l'exécutable `conda` n'est présent dans aucun des dossiers visités par le terminal (essayez `echo %PATH%` pour en afficher la liste sous Windows, et `echo $PATH` sous Linux/Mac). Sous Windows, vérifiez que vous ouvrez bien le terminal d'Anaconda (pas le terminal par défaut du système). Sous Linux/Mac, la commande `export PATH=~/anaconda3/bin:/usr/local/anaconda3/bin:/usr/anaconda3/bin:$PATH` va ajouter (temporairement) une liste de répertoires usuels à la liste de recherche.
+
+__Exercice 12 -__ Vérifiez que _pytest_ est installé en exécutant la commande `import pytest` qui ne doit pas renvoyer d'erreur. Ensuite exécutez la commande `pytest.main()`. Combien de fichiers ont été "collectés" ? Combien de tests ont réussi ? Combien ont échoué ?
+
+__Exercice 13 -__ [pytest.raises](https://docs.pytest.org/en/stable/assert.html#assertions-about-expected-exceptions) permet de vérifier qu'un bloc de code déclenche une exception (`raises` ne fait rien si le code échoue, et échoue si le code ne déclenche pas d'exception). Lisez les exemples de la documentation et ajoutez des tests pour vérifier que les variables privées sont inaccessibles de l'extérieur de chaque classe.
