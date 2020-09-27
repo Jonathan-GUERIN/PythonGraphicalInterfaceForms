@@ -4,7 +4,7 @@ Comme tout tutoriel, ce document a besoin de vos retours pour s'améliorer! N’
 
 # Tuto sur git/gitlab
 
-Ce document présente un tuto à l'usage de **git**/**gitlab**. Il est (sera?) consultable sous forme de vidéo dans le Moodle du cours INF-TC2.
+Ce document présente un tuto à l'usage de **git**/**gitlab**. Il est consultable sous forme de vidéo sur le Moodle du cours, à ladresse https://pedagogie1.ec-lyon.fr/course/view.php?id=969.
 
 ## Installer **git** et *Github Desktop*
 
