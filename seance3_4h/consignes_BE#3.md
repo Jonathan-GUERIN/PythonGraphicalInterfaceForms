@@ -1,11 +1,14 @@
 **Consignes pour le rendu**
 
-Ce BE constitue le premier devoir à rendre pour INF-TC2. Le compte-rendu de ce travail devra être déposé sur l'espace de dépôt spécifique à votre groupe sur ``Pedagogie1``, dans un **délai de deux semaines après la séance** (délai de rigueur, aucun travail accepté au delà de cette date).
+Ce BE constitue le premier devoir à rendre concernant INF-TC2. Le compte-rendu (CR) de ce travail devra être déposé sur ``Pedagogie1``, sur l'espace de dépôt spécifique à votre groupe. Et cela dans un **délai de deux semaines après la séance** (délai de rigueur, aucun travail accepté au delà de cette date).
+
+*Commentaires:*
 
  - Le travail peut être individuel ou en binôme.    
- - Le dépôt consistera en une unique archive (zip, rar) contenant l'ensemble des fichier suivants:   
-     - la base de données *Hotellerie.db* dans l'état qu'elle a après exécution du programme principal. Ainsi que le fichier Python, appelé *HotelDB.py*, qui contiendra la classe **HotelDB** et un programme principal permettant de rejouer l'ensemble des requêtes de cet énoncé.
-     - la dernière partie vous propose de travailler éventuellement avec une autre base de données de votre choix : si vous choisissez cette option, n'oubliez pas d'inclure la nouvelle base de données et le programme Python qui réalise les requêtes que vous aurez imaginés. 
+ - Le dépôt consistera en une unique archive (zip, rar) contenant l'ensemble des fichier :   
+     - la base de données *Hotellerie.db* après exécution de vos requêtes. 
+     - Le fichier Python, appelé *HotelDB.py*, contenant la classe **HotelDB** et un programme principal permettant de rejouer l'ensemble des requêtes de cet énoncé.
+     - la dernière partie de ce BE propose de travailler éventuellement sur une seconde bdd de votre choix : si vous choisissez cette option, n'oubliez pas d'inclure la nouvelle bdd (si elle est très volumineuse, donnez uniquement le chemin de téléchargement dans votre rapport) et le fichier Python qui réalise les requêtes que vous aurez imaginées. 
      - un rapport (format markdown ou pdf) contenant     
          - une en-tête où devront figurer de manière claire le nom des élèves, leur numéro de groupe, le nom de l'encadrant ainsi que le titre du BE.   
          - des commentaires sur la programmation de chacune des requêtes et les résultats obtenus.    
