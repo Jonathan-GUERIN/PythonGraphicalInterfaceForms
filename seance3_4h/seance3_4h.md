@@ -49,6 +49,8 @@ La réponse apparaît sous forme de 12 lignes. Ça vous rappelle des choses ? Si
 
 ### 1.2 Quelques requêtes Python (15 min.)
 
+**Attention** Avant de lancer un requête sur la bdd avec python, il est fortement conseillé de fermer ``DB Browser for SQLite``, sinon vous pourriez soit avoir un plantage de votre programme python, soit détruire la bdd (auquel cas il vous suffirait de la télécharger à nouveau).
+
 Nous allons maintenant chercher à reproduire la requête en utilisant Python et le package  ``sqlite3``.  C'est une librairie objet dont la [documentation](https://docs.python.org/3/library/sqlite3.html#module-sqlite3) fournit une description des classes et des méthodes disponibles. Suivez le guide...
 
 Le squelette typique d'un tel programme s'écrit: 
