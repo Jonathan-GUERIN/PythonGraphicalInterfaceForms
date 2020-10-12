@@ -109,8 +109,7 @@ Cet partie est consacrée au dessin progressif du pendu, au fur et à mesure des
 
 __Exercice 6 -__
 
-Pour cela, l'idée est de créer le pendu comme une liste de rectangles et d'ellipses (10 pièces doivent suffire), dans le constructeur de la classe __ZoneAffichage__. Pour faire disparaître le pendu (au moment de la création des picèces, ou au moement de la réinitialisation d'une partie p. ex.), on affectera aux pièces la couleur de fond du canevas. Pour faire apparaître les pièces progressivement (sur ordre de la méthode _traitement(...)_), on leur affectera une couleur différente.
-
+Pour cela, l'idée est de créer le pendu comme une liste de rectangles et d'ellipses (10 pièces doivent suffire), dans le constructeur de la classe __ZoneAffichage__. Pour faire disparaître le pendu (au moment de la création des pièces, ou au moment de la réinitialisation d'une partie p. ex.), on affectera aux pièces l'état caché (```state=hidden```). Pour faire apparaître les pièces progressivement (sur ordre de la méthode _traitement(...)_), on leur affectera l'état normal (```state=normal```).
 
 
 ## Partie 4 - Améliorations du jeu (autonomie)
