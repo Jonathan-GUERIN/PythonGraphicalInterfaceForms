@@ -112,17 +112,17 @@ __Exercice 6 -__
 Pour cela, l'idée est de créer le pendu comme une liste de rectangles et d'ellipses (10 pièces doivent suffire), dans le constructeur de la classe __ZoneAffichage__. Pour faire disparaître le pendu (au moment de la création des picèces, ou au moement de la réinitialisation d'une partie p. ex.), on affectera aux pièces la couleur de fond du canevas. Pour faire apparaître les pièces progressivement (sur ordre de la méthode _traitement(...)_), on leur affectera une couleur différente.
 
 
+
 ## Partie 4 - Améliorations du jeu (autonomie)
 
-Voici quelques améliorations possibles pour le jeu, seul la dernière est considérée comme un bonus.
+Voici quelques améliorations possibles pour le jeu, seule la dernière est considérée comme un bonus.
 
+__Exercice 7 - Apparence__ Développez le code qui permet au joueur de choisir les couleurs principales de l’application (par menus, boutons...).
 
-__Exercice 7 - Apparence__ Comment permettre au joueur de choisir les couleurs principales de l’application (menus, boutons...) ?
+__Exercice 8 - Bouton Triche__ Implémentez un bouton "Triche" qui permet de revenir en arrière d'un coup en cours de partie.
 
-__Exercice 8 - Bouton Triche__ Comment implémenter un bouton "Triche" qui permet de revenir en arrière d'un coup en cours de partie ?
-
-__Bonus - Score joueur__ Comment implémenter un système de sauvegarde des parties jouées par un joueur (identifié par son nom et son numéro) ? Techniquement, on pourra créer une base de données SQL (BE #3), appelée _pendu.db_, qui stockera une table avec les joueurs et une table avec les parties jouées par ces joueurs, selon le schéma suivant:
+__Bonus - Score joueur__ Implémentez un système de sauvegarde des parties jouées par un joueur (identifié par son nom et son numéro) ? Techniquement, on pourra créer une base de données SQL (BE #3), appelée _pendu.db_, qui stockera une table avec les joueurs et une table avec les parties jouées par ces joueurs, selon le schéma suivant:
 
 <center><img src="figures/TableSQLJeuPendu.png" style="width:50%"/></center>
 
-_ Remarque : on ne demande pas ici d'afficher de statistiques sur un joueur. Pour consulter la base, on pourra simplement utiliser ```DB Browse for SQLite```.
+_Remarque_ : on ne demande pas ici d'afficher un historique ou des statistiques sur un joueur. Pour consulter la base, on pourra simplement utiliser ```DB Browse for SQLite```.
