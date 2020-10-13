@@ -13,10 +13,13 @@ class Forme:
         self.x += dx
         self.y += dy
 
+    def setState(self, s):
+        self.__canevas.itemconfig(self._item, state=s)
+
 class Rectangle(Forme):
     def __init__(self, canevas, x, y, l, h, couleur):
         Forme.__init__(self, canevas, x, y)
-        self._item = canevas.create_rectangle(x, y, x+l, y+h, fill=couleur)
+        self._item = canevas.create_rectangle(x, y, x+l, y+h, fill=couleur, state="hidden")
         self.__l = l
         self.__h = h
     
@@ -35,15 +38,15 @@ class Rectangle(Forme):
                self.y <= y <= self.y + self.__h
 
     def redimension_par_points(self, x0, y0, x1, y1):
-        self.x = min(x0, x1)
-        self.y = min(y0, y1)
+        self.x   = min(x0, x1)
+        self.y   = min(y0, y1)
         self.__l = abs(x0 - x1)
         self.__h = abs(y0 - y1)
 
 class Ellipse(Forme):
     def __init__(self, canevas, x, y, rx, ry, couleur):
         Forme.__init__(self, canevas, x, y)
-        self._item = canevas.create_oval(x-rx, y-ry, x+rx, y+ry, fill=couleur)
+        self._item = canevas.create_oval(x-rx, y-ry, x+rx, y+ry, fill=couleur, state="hidden")
         self.__rx = rx
         self.__ry = ry
 
